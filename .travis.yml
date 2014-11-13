@@ -2,13 +2,13 @@ language: python
 python:
   - "2.7"
 
-before_install: mysqladmin create gpsi -u root -p
-before_install: python manage.py syncdb
-before_install: python manage.py migrate
-before_install: cd scripts
-before_install: python creategroups.py
-before_install: cd ..
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements.txt
+before_script: mysqladmin create gpsi -u travis -p
+before_script: python manage.py syncdb
+before_script: python manage.py migrate
+before_script: cd scripts
+before_script: python creategroups.py
+before_script: cd ..
 # command to run tests, e.g. python setup.py test
 script:  python manage.py test schedule
