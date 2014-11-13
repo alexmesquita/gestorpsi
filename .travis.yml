@@ -7,6 +7,7 @@ install: pip install -r requirements.txt
 before_script: 
   - mysqladmin create gpsi -u travis
   - python manage.py syncdb
+  - /no
   - python manage.py migrate
   - cd scripts
   - python creategroups.py
