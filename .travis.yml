@@ -4,11 +4,12 @@ python:
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements.txt
-before_script: mysqladmin create gpsi -u travis -p
-before_script: python manage.py syncdb
-before_script: python manage.py migrate
-before_script: cd scripts
-before_script: python creategroups.py
-before_script: cd ..
+before_script: 
+  - mysqladmin create gpsi -u travis -p
+  - python manage.py syncdb
+  - python manage.py migrate
+  - cd scripts
+  - python creategroups.py
+  - cd ..
 # command to run tests, e.g. python setup.py test
 script:  python manage.py test schedule
