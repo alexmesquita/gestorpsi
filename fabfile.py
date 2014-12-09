@@ -23,7 +23,7 @@ def staging() :
         run("git pull origin fabric")
         print(green("Installing requirements..."))
         run("pip install -r requirements.txt")
-	    print(green("Collecting static files..."))
+        print(green("Collecting static files..."))
         run("python manage.py collectstatic --noinput")
         print(green("Syncing the database..."))
         run("python manage.py syncdb")
