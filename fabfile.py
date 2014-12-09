@@ -7,8 +7,9 @@ def server() :
     env.host_string = '104.131.169.98'
     # your user on that system
     env.user = 'gestorpsi'
+    env.password = 'gestorpsi'
     # Assumes that your *.pem key is in the same directory as your fabfile.py
-    env.key_filename = '104.131.169.98.pem'
+    # env.key_filename = '104.131.169.98.pem'
 
 def staging() :
     # path to the directory on the server where your vhost is set up
@@ -30,5 +31,5 @@ def staging() :
         print(green("Migrating the database..."))
         run("python manage.py migrate")
         print(green("Restart the uwsgi process"))
-        run("sudo service %s restart" % process)
+        sudo("service %s restart" % process)
     print(red("DONE!"))
